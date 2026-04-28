@@ -1,20 +1,11 @@
 # NST DVA Capstone 2 - Project Repository
 
 > **Newton School of Technology | Data Visualization & Analytics**
-> A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw data into actionable business intelligence.
+> A 2-week capstone focused on Python, Tableau, and GitHub-based business analytics for Brazilian e-commerce operations.
 
 ---
 
-## Before You Start
-
-1. Rename the repository using the format `SectionName_TeamID_ProjectName`.
-2. Fill in the project details and team table below.
-3. Add the raw dataset to `data/raw/`.
-4. Complete the notebooks in order from `01` to `05`.
-5. Publish the final dashboard and add the public link in `tableau/dashboard_links.md`.
-6. Export the final report and presentation as PDFs into `reports/`.
-
-### Quick Start
+## Quick Start
 
 If you are working locally:
 
@@ -25,51 +16,45 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-If you are working in Google Colab:
-
-- Upload or sync the notebooks from `notebooks/`
-- Keep the final `.ipynb` files committed to GitHub
-- Export any cleaned datasets into `data/processed/`
-
 ---
 
 ## Project Overview
 
 | Field | Details |
 |---|---|
-| **Project Title** | _To be filled by team_ |
-| **Sector** | _e.g. Retail, Finance, Healthcare, EdTech_ |
-| **Team ID** | _e.g. DVA-B1-T3_ |
-| **Section** | _To be filled by team_ |
-| **Faculty Mentor** | _To be filled by team_ |
+| **Project Title** | Olist E-Commerce Business Insights |
+| **Sector** | Retail / E-Commerce |
+| **Team ID** | G-8 |
+| **Section** | Section C |
+| **Faculty Mentor** | Archit Raj |
 | **Institute** | Newton School of Technology |
-| **Submission Date** | _To be filled by team_ |
+| **Submission Date** | April 2026 |
 
 ### Team Members
 
-| Role | Name | GitHub Username |
+| Role | Name | Responsibility |
 |---|---|---|
-| Project Lead | _Name_ | `github-handle` |
-| Data Lead | _Name_ | `github-handle` |
-| ETL Lead | _Name_ | `github-handle` |
-| Analysis Lead | _Name_ | `github-handle` |
-| Visualization Lead | _Name_ | `github-handle` |
-| Strategy Lead | _Name_ | `github-handle` |
-| PPT and Quality Lead | _Name_ | `github-handle` |
+| Project Lead | Antik Mondal | GitHub coordination, repository structure, README documentation |
+| Python Analysis Lead | Viraj Chafale | Statistical analysis, Python-based business analysis |
+| Python ETL Lead | Anand Mishra | Data cleaning, transformation, ETL pipeline |
+| Tableau Lead | Aadit Vachher | Tableau dashboard development and dashboard flow |
+| Tableau Insights Lead | Sanchit Garg | EDA-driven dashboard insights and Tableau support |
+| Strategy and Report Lead | Vridhi Chaudhary | Final report writing and documentation |
+| PPT and Quality Lead | Viraj Chafale | Final presentation and delivery quality |
 
 ---
 
 ## Business Problem
 
-_Describe the sector context, the decision-maker this project serves, and the core business challenge being addressed. Keep this to 3-5 sentences written in plain language, as if addressing a senior stakeholder._
+Brazilian e-commerce marketplaces operate at scale, but customer experience depends heavily on reliable delivery, healthy seller operations, and consistent satisfaction outcomes. This project analyzes the Olist marketplace to understand how delivery performance, customer reviews, and customer value segments interact across orders, states, and product categories. The goal is to help business stakeholders identify where service quality is weakening and where operational improvements or retention efforts can create the highest impact.
 
 **Core Business Question**
 
-> _State the single main question your Tableau dashboard and Python analysis will answer._
+> How can Olist improve delivery reliability and customer satisfaction while prioritizing the customers, regions, and product categories that matter most to revenue?
 
 **Decision Supported**
 
-> _What action or decision will this analysis enable the stakeholder to take?_
+> This analysis supports decisions on logistics prioritization, category-level operational fixes, regional service improvement, and customer retention strategy using RFM segmentation.
 
 ---
 
@@ -77,21 +62,37 @@ _Describe the sector context, the decision-maker this project serves, and the co
 
 | Attribute | Details |
 |---|---|
-| **Source Name** | _e.g. World Bank, data.gov.in, Kaggle (raw only)_ |
-| **Direct Access Link** | _Paste the direct download or access URL_ |
-| **Row Count** | _Must be greater than 5,000_ |
-| **Column Count** | _Must be greater than 8 meaningful columns_ |
-| **Time Period Covered** | _e.g. Jan 2019 to Dec 2023_ |
-| **Format** | _e.g. CSV, JSON, Excel_ |
+| **Source Name** | Olist Brazilian E-Commerce Public Dataset |
+| **Direct Access Link** | [Kaggle Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) |
+| **Row Count** | 98,207 rows in the final master dataset |
+| **Column Count** | 36 columns in `olist_master_dataset.csv` |
+| **Time Period Covered** | September 2016 to September 2018 |
+| **Format** | CSV |
+
+**Raw Files Used**
+
+- `olist_orders_dataset.csv`
+- `olist_order_items_dataset.csv`
+- `olist_customers_dataset.csv`
+- `olist_order_reviews_dataset.csv`
+- `olist_products_dataset.csv`
+- `olist_sellers_dataset.csv`
+- `olist_geolocation_dataset.csv`
+- `product_category_name_translation.csv`
 
 **Key Columns Used**
 
 | Column Name | Description | Role in Analysis |
 |---|---|---|
-| _column_1_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_2_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_3_ | _What it means_ | _Used for KPI / filter / segmentation_ |
-| _column_4_ | _What it means_ | _Used for KPI / filter / segmentation_ |
+| `order_purchase_timestamp` | Timestamp when the order was placed | Time-series KPI tracking and trend analysis |
+| `revenue` | Final order revenue | Revenue KPI, state/category contribution, Tableau cards |
+| `review_score` | Customer review rating from 1 to 5 | Satisfaction analysis and delivery-impact testing |
+| `delivery_time_days` | Total days taken to deliver the order | Delivery efficiency KPI |
+| `delivery_delay_days` | Difference between actual and estimated delivery | Delay analysis and correlation testing |
+| `is_late` | Boolean flag showing whether delivery was late | On-time delivery KPI and service-level analysis |
+| `customer_state` | State of the customer in Brazil | Regional drill-down and operational comparison |
+| `product_category_name_english` | Product category in English | Category-level insight generation |
+| `customer_unique_id` | Unique customer identifier | RFM segmentation and repeat-customer analysis |
 
 For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
@@ -101,11 +102,21 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 | KPI | Definition | Formula / Computation |
 |---|---|---|
-| _e.g. Monthly Revenue Growth %_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Customer Churn Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Repeat Purchase Rate_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
+| On-Time Delivery Rate | Share of orders delivered on or before estimated date | `(1 - mean(is_late)) * 100` |
+| Average Delivery Days | Average time between purchase and delivery | `mean(delivery_time_days)` |
+| Average Review Score | Overall customer satisfaction level | `mean(review_score)` |
+| Total Revenue | Total value generated from delivered orders | `sum(revenue)` |
+| Average Order Value | Revenue earned per delivered order | `mean(revenue)` |
+| RFM Segment Value | Customer quality based on recency, frequency, and spend | Derived in `data/processed/olist_rfm_segments.csv` |
 
-Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
+**Current headline KPI values**
+
+- On-time delivery rate: `93.35%`
+- Average delivery time: `12.09 days`
+- Average review score: `4.12`
+- Total revenue analyzed: `13,494,400.74 BRL`
+- Average order value: `137.42 BRL`
+- Unique customers segmented: `94,990`
 
 ---
 
@@ -113,52 +124,59 @@ Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `not
 
 | Item | Details |
 |---|---|
-| **Dashboard URL** | _Paste Tableau Public link here_ |
-| **Executive View** | _Describe the high-level KPI summary view_ |
-| **Operational View** | _Describe the detailed drill-down view_ |
-| **Main Filters** | _List the interactive filters used_ |
+| **Dashboard URL** | [Tableau Public](https://public.tableau.com/views/brazile-commerceanalysis/Overview?:language=en-GB&:sid=&:display_count=n&:origin=viz_share_link) |
+| **Executive View** | The overview dashboard summarizes revenue, review score, delivery days, freight cost, order status, seller density, and review distribution in one high-level decision screen. |
+| **Operational View** | The dashboard set supports deeper drill-down into order performance, seller geography, and customer-level or segment-level patterns for operational follow-up. |
+| **Main Filters** | Review score bin, dashboard navigation between Overview, Orders, and Customers, plus interactive geographic/category exploration in Tableau. |
 
-Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
+Supporting files:
+
+- [`tableau/dashboard_links.md`](tableau/dashboard_links.md)
+- [`tableau/screenshots/overview dashboard.png`](tableau/screenshots/overview%20dashboard.png)
+- [`tableau/screenshots/orders dashboard.png`](tableau/screenshots/orders%20dashboard.png)
+- [`tableau/screenshots/customer dashboard.png`](tableau/screenshots/customer%20dashboard.png)
 
 ---
 
 ## Key Insights
 
-_List 8-12 major findings from the analysis, written in decision language. Each insight should tell the reader what to think or act upon, not merely describe a chart._
-
-1. _Insight 1_
-2. _Insight 2_
-3. _Insight 3_
-4. _Insight 4_
-5. _Insight 5_
-6. _Insight 6_
-7. _Insight 7_
-8. _Insight 8_
+1. Olist maintains a strong overall on-time delivery rate of `93.35%`, but the remaining delayed orders create a disproportionate customer experience risk.
+2. Late deliveries receive an average review score of only `2.27`, versus `4.25` for on-time orders, showing a major satisfaction penalty when logistics fail.
+3. A Welch's t-test confirms this delivery-review gap is statistically significant, with `t = -98.38` and `p < 0.001`.
+4. Delivery delay and customer review score have a meaningful negative relationship, with Pearson correlation `r = -0.2673`, indicating that larger delays usually reduce satisfaction.
+5. Sao Paulo (`SP`) is the largest revenue-driving state by a wide margin, contributing `5.16M BRL`, making it a critical region for operational protection.
+6. Rio de Janeiro (`RJ`) delivers high revenue (`1.81M BRL`) but has a weaker on-time rate (`88.23%`), which suggests strong commercial importance but operational inefficiency.
+7. Maranhão (`MA`) has the weakest observed on-time rate among meaningful states at `83.02%`, indicating a clear regional delivery reliability problem.
+8. `health_beauty`, `watches_gifts`, and `bed_bath_table` are among the highest-revenue categories, so improvements in these categories can move business outcomes faster than low-volume categories.
+9. `office_furniture`, `baby`, and `electronics` show relatively weaker on-time performance among higher-volume categories, making them strong candidates for logistics intervention.
+10. The marketplace is dominated by high-satisfaction reviews overall, but the review distribution is still highly sensitive to delivery execution.
+11. RFM segmentation shows `Loyal Customers` as the largest segment (`29,607` customers), while `Champions` are fewer (`6,126`) but have the highest average monetary value at `248.6 BRL`.
+12. The combined `At Risk`, `High Risk / Churn`, and `Lost` segments represent a large retention opportunity, showing that customer lifecycle management matters alongside operations.
 
 ---
 
 ## Recommendations
 
-_Provide 3-5 specific, actionable business recommendations, each linked directly to an insight above._
-
 | # | Insight | Recommendation | Expected Impact |
 |---|---|---|---|
-| 1 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 2 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 3 | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
+| 1 | Late deliveries sharply reduce review scores | Prioritize SLA monitoring and carrier escalation for delayed orders before delivery promises are missed | Higher customer satisfaction and fewer negative reviews |
+| 2 | Revenue-heavy states like `RJ` underperform on delivery reliability | Build region-specific logistics review for high-revenue but low-SLA states, starting with `RJ`, `BA`, and `MA` | Better retention in commercially important regions |
+| 3 | A few high-volume categories drive both revenue and service risk | Create category-level logistics scorecards for `health_beauty`, `bed_bath_table`, `watches_gifts`, and `office_furniture` | Faster operational gains where scale is highest |
+| 4 | Champions have the highest average spend | Launch VIP retention and repeat-purchase campaigns for `Champions` and `Loyal Customers` | Higher repeat revenue and stronger customer lifetime value |
+| 5 | Large churn-risk segments remain in the base | Run win-back campaigns for `At Risk` and `High Risk / Churn` users with segment-specific offers and service recovery messaging | Improved reactivation and lower effective churn |
 
 ---
 
 ## Repository Structure
 
 ```text
-SectionName_TeamID_ProjectName/
+Olist_Analysis/
 |
 |-- README.md
 |
 |-- data/
-|   |-- raw/                         # Original dataset (never edited)
-|   `-- processed/                   # Cleaned output from ETL pipeline
+|   |-- raw/                         # Original Olist source files
+|   `-- processed/                   # Cleaned exports for analysis and Tableau
 |
 |-- notebooks/
 |   |-- 01_extraction.ipynb
@@ -175,12 +193,15 @@ SectionName_TeamID_ProjectName/
 |   `-- dashboard_links.md
 |
 |-- reports/
-|   |-- README.md
+|   |-- DVA_Project_Report.pdf
 |   |-- project_report_template.md
 |   `-- presentation_outline.md
 |
 |-- docs/
 |   `-- data_dictionary.md
+|
+|-- insights/
+|   `-- exported analysis visuals
 |
 |-- DVA-oriented-Resume/
 `-- DVA-focused-Portfolio/
@@ -190,116 +211,43 @@ SectionName_TeamID_ProjectName/
 
 ## Analytical Pipeline
 
-The project follows a structured 7-step workflow:
+The project follows a structured workflow:
 
-1. **Define** - Sector selected, problem statement scoped, mentor approval obtained.
-2. **Extract** - Raw dataset sourced and committed to `data/raw/`; data dictionary drafted.
-3. **Clean and Transform** - Cleaning pipeline built in `notebooks/02_cleaning.ipynb` and optionally `scripts/etl_pipeline.py`.
-4. **Analyze** - EDA and statistical analysis performed in notebooks `03` and `04`.
-5. **Visualize** - Interactive Tableau dashboard built and published on Tableau Public.
-6. **Recommend** - 3-5 data-backed business recommendations delivered.
-7. **Report** - Final project report and presentation deck completed and exported to PDF in `reports/`.
+1. **Extract** - Source Olist raw files and inspect their schema in [`notebooks/01_extraction.ipynb`](notebooks/01_extraction.ipynb).
+2. **Clean and Transform** - Merge and clean the raw tables into analysis-ready outputs in [`notebooks/02_cleaning.ipynb`](notebooks/02_cleaning.ipynb).
+3. **Explore** - Study delivery, revenue, and review behavior through exploratory analysis in [`notebooks/03_eda.ipynb`](notebooks/03_eda.ipynb).
+4. **Analyze** - Run hypothesis testing, correlation analysis, and RFM segmentation in [`notebooks/04_statistical_analysis.ipynb`](notebooks/04_statistical_analysis.ipynb).
+5. **Prepare for BI** - Validate exports for Tableau in [`notebooks/05_final_load_prep.ipynb`](notebooks/05_final_load_prep.ipynb).
+6. **Visualize** - Publish the interactive Tableau dashboards for stakeholder consumption.
+7. **Recommend** - Convert quantitative findings into business actions around logistics, customer experience, and retention.
 
 ---
 
 ## Tech Stack
 
-| Tool | Status | Purpose |
-|---|---|---|
-| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, analysis, and KPI computation |
-| Google Colab | Supported | Cloud notebook execution environment |
-| Tableau Public | Mandatory | Dashboard design, publishing, and sharing |
-| GitHub | Mandatory | Version control, collaboration, contribution audit |
-| SQL | Optional | Initial data extraction only, if documented |
-
-**Recommended Python libraries:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `statsmodels`
-
----
-
-## Evaluation Rubric
-
-| Area | Marks | Focus |
-|---|---|---|
-| Problem Framing | 10 | Is the business question clear and well-scoped? |
-| Data Quality and ETL | 15 | Is the cleaning pipeline thorough and documented? |
-| Analysis Depth | 25 | Are statistical methods applied correctly with insight? |
-| Dashboard and Visualization | 20 | Is the Tableau dashboard interactive and decision-relevant? |
-| Business Recommendations | 20 | Are insights actionable and well-reasoned? |
-| Storytelling and Clarity | 10 | Is the presentation professional and coherent? |
-| **Total** | **100** | |
-
-> Marks are awarded for analytical thinking and decision relevance, not chart quantity, visual decoration, or code length.
+| Tool | Purpose |
+|---|---|
+| Python | Data cleaning, feature engineering, KPI calculation, and statistical analysis |
+| Jupyter Notebooks | Stepwise analytical workflow and documentation |
+| Pandas / NumPy | Data transformation and aggregation |
+| SciPy | Statistical testing and correlation analysis |
+| Matplotlib / Seaborn | Exploratory charts and supporting visuals |
+| Tableau Public | Interactive dashboards and stakeholder presentation |
+| GitHub | Version control, collaboration, and project documentation |
 
 ---
 
-## Submission Checklist
+## Deliverables
 
-**GitHub Repository**
-
-- [ ] Public repository created with the correct naming convention (`SectionName_TeamID_ProjectName`)
-- [ ] All notebooks committed in `.ipynb` format
-- [ ] `data/raw/` contains the original, unedited dataset
-- [ ] `data/processed/` contains the cleaned pipeline output
-- [ ] `tableau/screenshots/` contains dashboard screenshots
-- [ ] `tableau/dashboard_links.md` contains the Tableau Public URL
-- [ ] `docs/data_dictionary.md` is complete
-- [ ] `README.md` explains the project, dataset, and team
-- [ ] All members have visible commits and pull requests
-
-**Tableau Dashboard**
-
-- [ ] Published on Tableau Public and accessible via public URL
-- [ ] At least one interactive filter included
-- [ ] Dashboard directly addresses the business problem
-
-**Project Report**
-
-- [ ] Final report exported as PDF into `reports/`
-- [ ] Cover page, executive summary, sector context, problem statement
-- [ ] Data description, cleaning methodology, KPI framework
-- [ ] EDA with written insights, statistical analysis results
-- [ ] Dashboard screenshots and explanation
-- [ ] 8-12 key insights in decision language
-- [ ] 3-5 actionable recommendations with impact estimates
-- [ ] Contribution matrix matches GitHub history
-
-**Presentation Deck**
-
-- [ ] Final presentation exported as PDF into `reports/`
-- [ ] Title slide through recommendations, impact, limitations, and next steps
-
-**Individual Assets**
-
-- [ ] DVA-oriented resume updated to include this capstone
-- [ ] Portfolio link or project case study added
+- Final report: [`reports/DVA_Project_Report.pdf`](reports/DVA_Project_Report.pdf)
+- Tableau dashboard links: [`tableau/dashboard_links.md`](tableau/dashboard_links.md)
+- Data dictionary: [`docs/data_dictionary.md`](docs/data_dictionary.md)
+- Processed customer segmentation outputs:
+  - `data/processed/olist_rfm_segments.csv`
+  - `data/processed/olist_rfm_summary.csv`
 
 ---
 
-## Contribution Matrix
+## Summary
 
-This table must match evidence in GitHub Insights, PR history, and committed files.
-
-| Team Member | Dataset and Sourcing | ETL and Cleaning | EDA and Analysis | Statistical Analysis | Tableau Dashboard | Report Writing | PPT and Viva |
-|---|---|---|---|---|---|---|---|
-| _Member 1_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 2_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 3_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 4_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 5_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 6_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-
-_Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
-
-**Team Lead Name:** _____________________________
-
-**Date:** _______________
-
----
-
-## Academic Integrity
-
-All analysis, code, and recommendations in this repository must be the original work of the team listed above. Free-riding is tracked via GitHub Insights and pull request history. Any mismatch between the contribution matrix and actual commit history may result in individual grade adjustments.
-
----
-
-*Newton School of Technology - Data Visualization & Analytics | Capstone 2*
+This project combines Python analytics, statistical testing, RFM segmentation, and Tableau storytelling to evaluate how delivery performance shapes customer satisfaction in the Olist marketplace. The final output is designed to help stakeholders improve logistics reliability, protect revenue-heavy regions and categories, and prioritize the most valuable customer segments.
