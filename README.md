@@ -35,8 +35,8 @@ jupyter notebook
 | Role | Name | Responsibility |
 |---|---|---|
 | Project Lead | Antik Mondal | GitHub coordination, repository structure, README documentation |
-| Python Analysis Lead | Viraj Chafale | Statistical analysis, Python-based business analysis |
-| Python ETL Lead | Anand Mishra | Data cleaning, transformation, ETL pipeline |
+| Python Analysis Lead |  Anand Mishra | Statistical analysis, Python-based business analysis |
+| Python ETL Lead | Viraj Chafale | Data cleaning, transformation, ETL pipeline |
 | Tableau Lead | Aadit Vachher | Tableau dashboard development and dashboard flow |
 | Tableau Insights Lead | Sanchit Garg | EDA-driven dashboard insights and Tableau support |
 | Strategy and Report Lead | Vridhi Chaudhary | Final report writing and documentation |
